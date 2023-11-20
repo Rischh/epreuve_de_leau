@@ -5,9 +5,30 @@ def rules(arg):
     if arg.isdigit():
         return True
 
+# def ascii_order(arg):
+#     ascii = sorted(arg)
+#     print(ascii)
+    
 def ascii_order(arg):
-    ascii = sorted(arg)
-    print(ascii)
+    swapped = True
+
+
+    while swapped:
+
+        swapped = False
+    
+    
+        for i in range(len(arg) - 1):
+       
+            if arg[i] > arg[i + 1]:
+           
+                arg[i], arg[i + 1] = arg[i + 1], arg[i]
+            
+           
+                swapped = True
+
+    print(arg)
+    
 
 user_arguments = sys.argv[1:]
 
