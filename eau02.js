@@ -5,7 +5,10 @@ const displayBackwardsArguments = (arguments) => {
 }
 
 const isValidArguments = (arguments) => {
-  return arguments.length === 0
+  if (arguments.length === 0) {
+    return console.error("Le programme à besoin au moins d'un arugment pour fonctionner.")
+  }
+  return arguments
 }
 
 const getArguments = () => {
@@ -13,10 +16,10 @@ const getArguments = () => {
   return arguments
 }
 
-const getBackwardsArguments = (displayBackwardsArguments, isValidArguments) => {
-  if (isValidArguments)
-    return console.error("Le programme à besoin au moins d'un arugment pour fonctionner.")
-  else displayBackwardsArguments
+const getBackwardsArguments = () => {
+  const arguments = isValidArguments(getArguments())
+  if (!arguments) return
+  displayBackwardsArguments(arguments)
 }
 
-getBackwardsArguments(displayBackwardsArguments(getArguments()), isValidArguments(getArguments()))
+getBackwardsArguments()
