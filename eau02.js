@@ -1,25 +1,22 @@
-const displayBackwardsArguments = (arguments) => {
-  for (let i = arguments.length - 1; i >= 0; i--) {
-    console.log(arguments[i])
+const displayBackwardsArguments = (programArguments) => {
+  for (let i = programArguments.length - 1; i >= 0; i--) {
+    console.log(programArguments[i])
   }
 }
 
-const isValidArguments = (arguments) => {
-  if (arguments.length === 0) {
-    return console.error("Le programme à besoin au moins d'un arugment pour fonctionner.")
-  }
-  return arguments
+const validateArgumentCount = (programArguments) => {
+  if (programArguments.length === 0)
+    return console.error("Le programme à besoin au moins d'un argument pour fonctionner.")
+  return programArguments
 }
 
-const getArguments = () => {
-  const arguments = process.argv.slice(2)
-  return arguments
-}
+const getArguments = () => process.argv.slice(2)
 
 const getBackwardsArguments = () => {
-  const arguments = isValidArguments(getArguments())
-  if (!arguments) return
-  displayBackwardsArguments(arguments)
+  const programArguments = validateArgumentCount(getArguments())
+  if (!programArguments) return
+
+  displayBackwardsArguments(programArguments)
 }
 
 getBackwardsArguments()
