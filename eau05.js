@@ -20,13 +20,17 @@ const getTextSlice = (text, substring, index) => {
 
 const validateArgsCount = (args) => {
   if (args.length !== 2)
-    return console.error("Le programme a besoin de 2 arguments pour fonctionner.")
+    return console.error(
+      "Le programme a besoin de 2 arguments pour fonctionner."
+    )
   return args
 }
 
 const validateStringArgs = (strings) => {
-  if (!isNaN(+strings[0]) || !isNaN(+strings[1]))
-    return console.error("Les deux arguments doivent être des chaines de caractères.")
+  if (!isNaN(strings[0]) || !isNaN(strings[1]))
+    return console.error(
+      "Les deux arguments doivent être des chaines de caractères."
+    )
   return strings
 }
 
