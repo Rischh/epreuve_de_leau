@@ -20,21 +20,24 @@ const capitalizeFirstLetters = (text) => {
   return result
 }
 
-const validateArgsCount = (args) => {
+const validateArgCount = (args) => {
   if (args.length !== 1)
-    return console.error("Le programme à besoin d'un unique argument pour fonctionner.")
+    return console.error(
+      "Le programme à besoin d'un unique argument pour fonctionner."
+    )
   return args[0]
 }
 
 const validateStringArg = (arg) => {
-  if (!isNaN(+arg)) return console.error("Le programme à besoin d'un texte pour fonctionner.")
+  if (!isNaN(arg))
+    return console.error("Le programme à besoin d'un texte pour fonctionner.")
   return arg
 }
 
 const getArgs = () => process.argv.slice(2)
 
 const capitalizeUserInput = () => {
-  const arg = validateArgsCount(getArgs())
+  const arg = validateArgCount(getArgs())
   if (!arg) return
 
   const text = validateStringArg(arg)
