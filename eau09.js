@@ -1,5 +1,5 @@
 const setMinMax = (a, b) => {
-  let max, min
+  let min, max
 
   if (a > b) {
     max = a
@@ -24,22 +24,22 @@ const displayNumberRange = (min, max) => {
 
 const validateArgsCount = (args) => {
   if (args.length !== 2)
-    return console.error("Le programme a besoin de 2 arguments pour fonctionner.")
+    return console.error(
+      "Le programme a besoin de 2 arguments pour fonctionner."
+    )
   return args
 }
 
-const validateNumericArgs = (args) => {
-  const fisrtNumber = +args[0]
-  const secondNumber = +args[1]
-
-  if (isNaN(fisrtNumber) || isNaN(secondNumber))
-    return console.error("Le programme a besoin de nombres pour fonctionner.")
-  return [fisrtNumber, secondNumber]
+const validateNumericArg = (arg) => {
+  if (isNaN(arg))
+    return console.error("Le programme a besoin de 2 nombres pour fonctionner.")
+  return true
 }
 
 const checkEquality = (a, b) => {
-  if (a === b) return console.error("Le programme a besoin de 2 arguments non égaux.")
-  return [a, b]
+  if (a === b)
+    return console.error("Le programme a besoin de 2 arguments non égaux.")
+  return true
 }
 
 const getArgs = () => process.argv.slice(2)
@@ -48,17 +48,16 @@ const resolveNumberRange = () => {
   const args = validateArgsCount(getArgs())
   if (!args) return
 
-  let numbers = validateNumericArgs(args)
-  if (!numbers) return
-  const fisrtNumber = +numbers[0]
-  const secondNumber = +numbers[1]
+  for (let i = 0; i < args.length; i++) {
+    if (!validateNumericArg(args[i])) return
+    args[i] = +args[i]
+  }
 
-  numbers = checkEquality(fisrtNumber, secondNumber)
-  if (!numbers) return
+  const [fisrtNumber, secondNumber] = args
 
-  numbers = setMinMax(fisrtNumber, secondNumber)
-  const min = numbers[0]
-  const max = numbers[1]
+  if (!checkEquality(fisrtNumber, secondNumber)) return
+
+  const [min, max] = setMinMax(fisrtNumber, secondNumber)
 
   return displayNumberRange(min, max)
 }
