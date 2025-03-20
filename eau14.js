@@ -1,42 +1,38 @@
-const getSortedAsciiCodes = (args) => {
-  const asciiCodes = []
+const getSortedByAscii = (values) => {
+  const sortedValues = [...values]
 
-  for (let i = 0; i < args.length; i++) {
-    asciiCodes.push(args[i].charCodeAt())
-  }
-
-  return asciiCodes.sort()
-}
-
-const sortArgsByAscii = (args, sortedAsciiCodes) => {
-  let sortedArgs = ""
-
-  for (let i = 0; i < sortedAsciiCodes.length; i++) {
-    for (let j = 0; j < args.length; j++) {
-      if (sortedAsciiCodes[i] === args[j].charCodeAt()) {
-        sortedArgs += `${args[j]} `
-        break
+  for (let i = 0; i < sortedValues.length; i++) {
+    let isSorted = true
+    for (let j = 0; j < sortedValues.length - 1; j++) {
+      if (sortedValues[j].charCodeAt() > sortedValues[j + 1].charCodeAt()) {
+        ;[sortedValues[j], sortedValues[j + 1]] = [
+          sortedValues[j + 1],
+          sortedValues[j],
+        ]
+        isSorted = false
       }
     }
+    if (isSorted) return sortedValues
   }
 
-  return sortedArgs
+  return sortedValues
 }
 
 const validateArgsCount = (args) => {
   if (args.length < 2)
-    return console.error("Le programme a besoin d'au moins 2 arguments pour fonctionner.")
+    return console.error(
+      "Le programme a besoin d'au moins 2 arguments pour fonctionner."
+    )
   return args
 }
 
 const getArgs = () => process.argv.slice(2)
 
-const runSortingProcess = () => {
+const resolveSortedByAscii = () => {
   const args = validateArgsCount(getArgs())
   if (!args) return
 
-  const sortedAsciiCodes = getSortedAsciiCodes(args)
-  return sortArgsByAscii(args, sortedAsciiCodes)
+  return getSortedByAscii(args).join(" ")
 }
 
-console.log(runSortingProcess())
+console.log(resolveSortedByAscii())
