@@ -39,7 +39,10 @@ const validateNumericArg = (n) => {
   return true
 }
 
-const getArgs = () => process.argv.slice(2)
+const getArgs = () => {
+  const args = process.argv.slice(2)
+  return args
+}
 
 const displaySelectSort = () => {
   const args = validateArgsCount(getArgs())

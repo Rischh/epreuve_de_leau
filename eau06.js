@@ -36,7 +36,10 @@ const validateStringArg = (arg) => {
   return arg
 }
 
-const getArgs = () => process.argv.slice(2)
+const getArgs = () => {
+  const args = process.argv.slice(2)
+  return args
+}
 
 const capitalizeUserInput = () => {
   const arg = validateArgCount(getArgs())

@@ -29,7 +29,10 @@ const validateNumericArg = (n) => {
   return true
 }
 
-const getArgs = () => process.argv.slice(2)
+const getArgs = () => {
+  const args = process.argv.slice(2)
+  return args
+}
 
 const displayAbsoluteMinDiff = () => {
   const args = validateArgsCount(getArgs())

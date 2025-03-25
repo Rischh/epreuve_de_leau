@@ -28,7 +28,10 @@ const validateNumericArg = (arg) => {
   return parseInt(arg)
 }
 
-const getArgs = () => process.argv.slice(2)
+const getArgs = () => {
+  const args = process.argv.slice(2)
+  return args
+}
 
 const displayNextPrime = () => {
   const arg = validateArgCount(getArgs())

@@ -23,7 +23,10 @@ const validateArgCount = (args) => {
   return args[0]
 }
 
-const getArgs = () => process.argv.slice(2)
+const getArgs = () => {
+  const args = process.argv.slice(2)
+  return args
+}
 
 const resolveDigitValidation = () => {
   const arg = validateArgCount(getArgs())

@@ -42,7 +42,10 @@ const checkEquality = (a, b) => {
   return true
 }
 
-const getArgs = () => process.argv.slice(2)
+const getArgs = () => {
+  const args = process.argv.slice(2)
+  return args
+}
 
 const resolveNumberRange = () => {
   const args = validateArgsCount(getArgs())

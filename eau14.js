@@ -26,7 +26,10 @@ const validateArgsCount = (args) => {
   return args
 }
 
-const getArgs = () => process.argv.slice(2)
+const getArgs = () => {
+  const args = process.argv.slice(2)
+  return args
+}
 
 const resolveSortedByAscii = () => {
   const args = validateArgsCount(getArgs())

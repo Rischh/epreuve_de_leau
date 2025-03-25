@@ -17,20 +17,23 @@ const getFibonacciNumber = (index) => {
   return fibonacciNumber
 }
 
-const getArgs = () => process.argv.slice(2)
-
 const validateArgCount = (args) => {
   if (args.length !== 1)
     return console.error(
-      "Le programme a besoin d'un unique argument pour fonctionner."
-    )
-  return args[0]
+  "Le programme a besoin d'un unique argument pour fonctionner."
+)
+return args[0]
 }
 
 const validateNumericArg = (arg) => {
   if (isNaN(arg))
     return console.error("Le programme a besoin d'un nombre entier.")
   return parseInt(arg)
+}
+
+const getArgs = () => {
+  const args = process.argv.slice(2)
+  return args
 }
 
 const resolveFibonacciNumber = () => {

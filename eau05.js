@@ -34,7 +34,10 @@ const validateStringArgs = (strings) => {
   return strings
 }
 
-const getArgs = () => process.argv.slice(2)
+const getArgs = () => {
+  const args = process.argv.slice(2)
+  return args
+}
 
 const searchSubstring = () => {
   const args = validateArgsCount(getArgs())

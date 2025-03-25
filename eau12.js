@@ -33,10 +33,13 @@ const validateNumericArg = (n) => {
   return true
 }
 
-const getArguments = () => process.argv.slice(2)
+const getArgs = () => {
+  const args = process.argv.slice(2)
+  return args
+}
 
 const displayBubbleSort = () => {
-  const args = validateArgsCount(getArguments())
+  const args = validateArgsCount(getArgs())
   if (!args) return
 
   const numbers = [...args]
