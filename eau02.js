@@ -1,12 +1,14 @@
-const getBackwardsArgs = (args) => {
-  const backwardsArgs = []
+const getReverseArray = (arr) => {
+  const reverseArray = []
 
-  for (let i = args.length - 1; i >= 0; i--) backwardsArgs.push(args[i])
+  for (let i = arr.length - 1; i >= 0; i--) {
+    reverseArray.push(arr[i])
+  }
 
-  return backwardsArgs
+  return reverseArray
 }
 
-const validateArgsCount = (args) => {
+const isValidArgsLength = (args) => {
   if (args.length < 2)
     return console.error(
       "Le programme a besoin d'au moins deux arguments pour fonctionner."
@@ -19,13 +21,13 @@ const getArgs = () => {
   return args
 }
 
-const resolveBackwardsArgs = () => {
-  const args = validateArgsCount(getArgs())
+const displayReverseArgs = () => {
+  const args = isValidArgsLength(getArgs())
   if (!args) return
 
-  const backwardsArgs = getBackwardsArgs(args)
+  const reverseArgs = getReverseArray(args)
 
-  for (const arg of backwardsArgs) console.log(arg)
+  for (const arg of reverseArgs) console.log(arg)
 }
 
-resolveBackwardsArgs()
+displayReverseArgs()
