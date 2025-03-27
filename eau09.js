@@ -22,7 +22,7 @@ const setMinMax = (a, b) => {
   return [min, max]
 }
 
-const validateArgsCount = (args) => {
+const isValidArgsLength = (args) => {
   if (args.length !== 2)
     return console.error(
       "Le programme a besoin de 2 arguments pour fonctionner."
@@ -30,10 +30,10 @@ const validateArgsCount = (args) => {
   return args
 }
 
-const validateNumericArg = (arg) => {
-  if (isNaN(arg))
+const isValidNumber = (n) => {
+  if (isNaN(n))
     return console.error("Le programme a besoin de 2 nombres pour fonctionner.")
-  return true
+  return n
 }
 
 const isEqual = (a, b) => {
@@ -48,15 +48,16 @@ const getArgs = () => {
 }
 
 const resolveBetweenMinMax = () => {
-  const args = validateArgsCount(getArgs())
+  const args = isValidArgsLength(getArgs())
   if (!args) return
 
-  for (let i = 0; i < args.length; i++) {
-    if (!validateNumericArg(args[i])) return
-    args[i] = +args[i]
+  const numbers = []
+  for (const arg of args) {
+    if (!isValidNumber(arg)) return
+    numbers.push(+arg)
   }
 
-  const [fisrtNumber, secondNumber] = args
+  const [fisrtNumber, secondNumber] = numbers
 
   if (!isEqual(fisrtNumber, secondNumber)) return
 
