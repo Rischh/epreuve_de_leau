@@ -5,7 +5,7 @@ const getIndexOf = (array, searchElement) => {
   return -1
 }
 
-const validateArgsCount = (args) => {
+const isValidArgsLength = (args) => {
   if (args.length < 2)
     return console.error(
       "Le programme a besoin d'au moins 2 arguments pour fonctionner."
@@ -19,7 +19,7 @@ const getArgs = () => {
 }
 
 const resolveIndexOf = () => {
-  const args = validateArgsCount(getArgs())
+  const args = isValidArgsLength(getArgs())
   if (!args) return
 
   const values = [...args]
