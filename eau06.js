@@ -1,22 +1,32 @@
 const getAlterningCapitalize = (string) => {
   let result = ""
-  let letterCount = 0
+  let isIndexEven = true
 
   const FIRST_LETTER_CHAR_CODE = 65
   const LAST_LETTER_CHAR_CODE = 122
 
   for (let i = 0; i < string.length; i++) {
+    const charCode = string[i].charCodeAt()
+
     if (
-      string[i].charCodeAt() >= FIRST_LETTER_CHAR_CODE &&
-      string[i].charCodeAt() <= LAST_LETTER_CHAR_CODE
+      charCode >= FIRST_LETTER_CHAR_CODE &&
+      charCode <= LAST_LETTER_CHAR_CODE
     ) {
-      letterCount++
-      if (letterCount % 2 === 1) {
-        result += string[i].toUpperCase()
+      if (charCode >= 65 && charCode <= 90 && isIndexEven) {
+        result += string[i]
+        isIndexEven = false
+        continue
+      }
+
+      if (isIndexEven) {
+        result += String.fromCharCode(charCode - 32)
+        isIndexEven = false
         continue
       }
     }
+
     result += string[i]
+    isIndexEven = true
   }
 
   return result
