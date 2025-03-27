@@ -1,17 +1,21 @@
-const getNextPrimeNumber = (n) => {
-  let nextPrimeNumber
+const getNextPrimeNumber = (n, isPrimeNumber) => {
+  let nextPrimeNumber = n + 1
 
   let isComposite = true
-  for (let i = n + 1; isComposite; i++) {
-    for (let j = 2; j <= i; j++) {
-      if (j === i) {
-        isComposite = false
-        nextPrimeNumber = i
-      }
-      if (i % j === 0) break
+
+  while (isComposite) {
+    if (isPrimeNumber(nextPrimeNumber)) return nextPrimeNumber
+    nextPrimeNumber++
+  }
+}
+
+const isPrimeNumber = (n) => {
+  for (let i = 2; i < n; i++) {
+    if (n % i === 0) {
+      return false
     }
   }
-  return nextPrimeNumber
+  return true
 }
 
 const isValidArgsLength = (args) => {
@@ -40,7 +44,7 @@ const resolveNextPrimeNumber = () => {
   const number = isValidNumber(arg)
   if (number === undefined) return
 
-  return getNextPrimeNumber(number)
+  return getNextPrimeNumber(number, isPrimeNumber)
 }
 
 console.log(resolveNextPrimeNumber())
