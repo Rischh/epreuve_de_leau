@@ -1,4 +1,4 @@
-const isOnlyDigits = (arg) => {
+const isValidNumber = (string) => {
   const ZERO_CHAR_CODE = 48
   const NINE_CHAR_CODE = 57
 
@@ -28,11 +28,11 @@ const getArgs = () => {
   return args
 }
 
-const resolveDigitValidation = () => {
+const getIsValidNumber = () => {
   const arg = validateArgCount(getArgs())
   if (!arg) return
 
-  return isOnlyDigits(arg)
+  return isValidNumber(arg)
 }
 
-console.log(resolveDigitValidation())
+console.log(getIsValidNumber())
