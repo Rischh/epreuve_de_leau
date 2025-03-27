@@ -1,20 +1,20 @@
-const getNextPrime = (n) => {
-  let nextPrime
+const getNextPrimeNumber = (n) => {
+  let nextPrimeNumber
 
   let isComposite = true
   for (let i = n + 1; isComposite; i++) {
     for (let j = 2; j <= i; j++) {
       if (j === i) {
         isComposite = false
-        nextPrime = i
+        nextPrimeNumber = i
       }
       if (i % j === 0) break
     }
   }
-  return nextPrime
+  return nextPrimeNumber
 }
 
-const validateArgCount = (args) => {
+const isValidArgsLength = (args) => {
   if (args.length !== 1)
     return console.error(
       "Le programme a besoin d'un unique argument pour fonctionner."
@@ -22,10 +22,10 @@ const validateArgCount = (args) => {
   return args[0]
 }
 
-const validateNumericArg = (arg) => {
-  if (isNaN(arg))
+const isValidNumber = (n) => {
+  if (isNaN(n))
     return console.error("Le programme a besoin d'un nombre entier.")
-  return parseInt(arg)
+  return parseInt(n)
 }
 
 const getArgs = () => {
@@ -33,14 +33,14 @@ const getArgs = () => {
   return args
 }
 
-const displayNextPrime = () => {
-  const arg = validateArgCount(getArgs())
+const resolveNextPrimeNumber = () => {
+  const arg = isValidArgsLength(getArgs())
   if (!arg) return
 
-  const number = validateNumericArg(arg)
+  const number = isValidNumber(arg)
   if (number === undefined) return
 
-  return getNextPrime(number)
+  return getNextPrimeNumber(number)
 }
 
-console.log(displayNextPrime())
+console.log(resolveNextPrimeNumber())
