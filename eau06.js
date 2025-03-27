@@ -22,18 +22,20 @@ const getAlterningCapitalize = (string) => {
   return result
 }
 
-const validateArgCount = (args) => {
+const isValidArgsLength = (args) => {
   if (args.length !== 1)
     return console.error(
       "Le programme a besoin d'un unique argument pour fonctionner."
     )
-  return args[0]
+  return args
 }
 
-const validateStringArg = (arg) => {
-  if (!isNaN(arg))
-    return console.error("Le programme a besoin d'un texte pour fonctionner.")
-  return arg
+const isValidString = (string) => {
+  if (!isNaN(string))
+    return console.error(
+      "Le programme a besoin d'une chaine de caracteres pour fonctionner."
+    )
+  return string
 }
 
 const getArgs = () => {
@@ -42,13 +44,13 @@ const getArgs = () => {
 }
 
 const resolveAlerningCapitalize = () => {
-  const arg = validateArgCount(getArgs())
-  if (!arg) return
+  const args = isValidArgsLength(getArgs())
+  if (!args) return
 
-  const string = validateStringArg(arg)
+  const string = isValidString(args[0])
   if (!string) return
 
-  return getCapsAlterningCase(string)
+  return getAlterningCapitalize(string)
 }
 
 console.log(resolveAlerningCapitalize())
