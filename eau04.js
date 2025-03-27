@@ -23,7 +23,7 @@ const isValidArgsLength = (args) => {
     return console.error(
       "Le programme a besoin d'un unique argument pour fonctionner."
     )
-  return args[0]
+  return args
 }
 
 const isValidNumber = (n) => {
@@ -38,10 +38,10 @@ const getArgs = () => {
 }
 
 const resolveNextPrimeNumber = () => {
-  const arg = isValidArgsLength(getArgs())
-  if (!arg) return
+  const args = isValidArgsLength(getArgs())
+  if (!args) return
 
-  const number = isValidNumber(arg)
+  const number = isValidNumber(args[0])
   if (number === undefined) return
 
   return getNextPrimeNumber(number, isPrimeNumber)
