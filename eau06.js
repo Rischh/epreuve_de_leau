@@ -1,22 +1,22 @@
-const alternateCapitalization = (text) => {
+const getAlterningCapitalize = (string) => {
   let result = ""
   let letterCount = 0
 
   const FIRST_LETTER_CHAR_CODE = 65
   const LAST_LETTER_CHAR_CODE = 122
 
-  for (let i = 0; i < text.length; i++) {
+  for (let i = 0; i < string.length; i++) {
     if (
-      text[i].charCodeAt() >= FIRST_LETTER_CHAR_CODE &&
-      text[i].charCodeAt() <= LAST_LETTER_CHAR_CODE
+      string[i].charCodeAt() >= FIRST_LETTER_CHAR_CODE &&
+      string[i].charCodeAt() <= LAST_LETTER_CHAR_CODE
     ) {
       letterCount++
       if (letterCount % 2 === 1) {
-        result += text[i].toUpperCase()
+        result += string[i].toUpperCase()
         continue
       }
     }
-    result += text[i]
+    result += string[i]
   }
 
   return result
@@ -41,14 +41,14 @@ const getArgs = () => {
   return args
 }
 
-const capitalizeUserInput = () => {
+const resolveAlerningCapitalize = () => {
   const arg = validateArgCount(getArgs())
   if (!arg) return
 
-  const text = validateStringArg(arg)
-  if (!text) return
+  const string = validateStringArg(arg)
+  if (!string) return
 
-  return alternateCapitalization(text)
+  return getCapsAlterningCase(string)
 }
 
-console.log(capitalizeUserInput())
+console.log(resolveAlerningCapitalize())
