@@ -1,6 +1,6 @@
-const getIndexOf = (values, searchValue) => {
-  for (let i = 0; i < values.length - 1; i++) {
-    if (values[i] === searchValue) return i
+const getIndexOf = (array, searchElement) => {
+  for (let i = 0; i < array.length; i++) {
+    if (array[i] === searchElement) return i
   }
   return -1
 }
@@ -18,11 +18,15 @@ const getArgs = () => {
   return args
 }
 
-const displaySearchValueIndex = () => {
-  const values = validateArgsCount(getArgs())
-  if (!values) return
+const resolveIndexOf = () => {
+  const args = validateArgsCount(getArgs())
+  if (!args) return
 
-  return getIndexOf(values, values[values.length - 1])
+  const values = [...args]
+  searchValue = values[values.length - 1]
+  values.pop()
+
+  return getIndexOf(values, searchValue)
 }
 
-console.log(displaySearchValueIndex())
+console.log(resolveIndexOf())
