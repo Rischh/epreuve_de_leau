@@ -1,16 +1,6 @@
 const isValidNumber = (string) => {
-  const ZERO_CHAR_CODE = 48
-  const NINE_CHAR_CODE = 57
-
-  for (let i = 0; i < arg.length; i++) {
-    if (
-      !(
-        arg[i].charCodeAt() >= ZERO_CHAR_CODE &&
-        arg[i].charCodeAt() <= NINE_CHAR_CODE
-      )
-    ) {
-      return false
-    }
+  for (let i = 0; i < string.length; i++) {
+    if (!+string[i]) return false
   }
   return true
 }
