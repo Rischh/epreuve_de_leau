@@ -1,9 +1,9 @@
-const isSubstringPresent = (text, substring) => {
-  for (let i = 0; i < text.length; i++) {
-    const portion = getTextSlice(text, substring, i)
-    if (portion.length !== substring.length) break
+const isIncluded = (string, searchString) => {
+  for (let i = 0; i < string.length; i++) {
+    const portion = getTextSlice(string, searchString, i)
+    if (portion.length !== searchString.length) break
 
-    if (portion === substring) return true
+    if (portion === searchString) return true
   }
   return false
 }
@@ -18,7 +18,7 @@ const getTextSlice = (text, substring, index) => {
   return portion
 }
 
-const validateArgsCount = (args) => {
+const isValidArgsLength = (args) => {
   if (args.length !== 2)
     return console.error(
       "Le programme a besoin de 2 arguments pour fonctionner."
@@ -39,15 +39,15 @@ const getArgs = () => {
   return args
 }
 
-const searchSubstring = () => {
-  const args = validateArgsCount(getArgs())
+const hasSearchString = () => {
+  const args = isValidArgsLength(getArgs())
   if (!args) return
 
   const strings = validateStringArgs(args)
   if (!strings) return
 
-  const [sourceString, searchString] = strings
-  return isSubstringPresent(sourceString, searchString)
+  const [string, searchString] = strings
+  return isIncluded(string, searchString)
 }
 
-console.log(searchSubstring())
+console.log(hasSearchString())
