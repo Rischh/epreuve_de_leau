@@ -1,11 +1,11 @@
 const getBetweenMinMax = (min, max) => {
-  let betweenMinMax = ""
+  const result = []
 
   for (let i = min; i < max; i++) {
-    betweenMinMax += `${i} `
+    result.push(i)
   }
 
-  console.log(betweenMinMax)
+  return result
 }
 
 const setMinMax = (a, b) => {
@@ -63,7 +63,7 @@ const resolveBetweenMinMax = () => {
 
   const [min, max] = setMinMax(fisrtNumber, secondNumber)
 
-  return getBetweenMinMax(min, max)
+  return getBetweenMinMax(min, max).join(" ")
 }
 
-resolveBetweenMinMax()
+console.log(resolveBetweenMinMax())
