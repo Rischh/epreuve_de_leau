@@ -1,17 +1,16 @@
 const getFibonacciNumber = (index) => {
-  if (index < 2) return index
+  const seedValues = [0, 1]
 
-  let previousNumberOne = 0
-  let previousNumberTwo = 1
+  if (seedValues.includes(index)) return index
 
   let fibonacciNumber
 
   for (let i = 0; i < index - 1; i++) {
-    const sum = previousNumberOne + previousNumberTwo
+    const sum = seedValues[0] + seedValues[1]
     fibonacciNumber = sum
 
-    previousNumberOne = previousNumberTwo
-    previousNumberTwo = sum
+    seedValues[0] = seedValues[1]
+    seedValues[1] = sum
   }
 
   return fibonacciNumber
