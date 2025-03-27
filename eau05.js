@@ -26,12 +26,12 @@ const isValidArgsLength = (args) => {
   return args
 }
 
-const validateStringArgs = (strings) => {
-  if (!isNaN(strings[0]) || !isNaN(strings[1]))
+const isValidString = (string) => {
+  if (!isNaN(string))
     return console.error(
-      "Les deux arguments doivent être des chaines de caractères."
+      "Le programme a besoin d'une chaine de caracteres pour fonctionner."
     )
-  return strings
+  return string
 }
 
 const getArgs = () => {
@@ -43,10 +43,11 @@ const hasSearchString = () => {
   const args = isValidArgsLength(getArgs())
   if (!args) return
 
-  const strings = validateStringArgs(args)
-  if (!strings) return
+  for (const arg of args) {
+    if (!isValidString(arg)) return
+  }
 
-  const [string, searchString] = strings
+  const [string, searchString] = args
   return isIncluded(string, searchString)
 }
 
