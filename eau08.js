@@ -15,12 +15,12 @@ const isValidNumber = (string) => {
   return true
 }
 
-const validateArgCount = (args) => {
+const isValidArgsLength = (args) => {
   if (args.length !== 1)
     return console.error(
       "Le programme à besoin d'un unique argument pour fonctionner."
     )
-  return args[0]
+  return args
 }
 
 const getArgs = () => {
@@ -29,10 +29,10 @@ const getArgs = () => {
 }
 
 const getIsValidNumber = () => {
-  const arg = validateArgCount(getArgs())
-  if (!arg) return
+  const args = isValidArgsLength(getArgs())
+  if (!args) return
 
-  return isValidNumber(arg)
+  return isValidNumber(args[0])
 }
 
 console.log(getIsValidNumber())
