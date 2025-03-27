@@ -1,21 +1,14 @@
 const isIncluded = (string, searchString) => {
   for (let i = 0; i < string.length; i++) {
-    const portion = getTextSlice(string, searchString, i)
+    let portion = ""
+    for (let j = i; j < searchString.length + i; j++) {
+      portion += string[j]
+    }
     if (portion.length !== searchString.length) break
 
     if (portion === searchString) return true
   }
   return false
-}
-
-const getTextSlice = (text, substring, index) => {
-  let portion = ""
-
-  for (let i = index; i < substring.length + index; i++) {
-    portion += text[i]
-  }
-
-  return portion
 }
 
 const isValidArgsLength = (args) => {
