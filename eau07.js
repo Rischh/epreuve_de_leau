@@ -1,20 +1,20 @@
-const capitalizeFirstLetters = (text) => {
+const getCapitalizeFirstLetters = (string) => {
   const SPACE_CHAR_CODE = 32
   const NEW_LINE_CHAR_CODE = 10
 
   let result = ""
 
-  result += text[0].toUpperCase()
+  result += string[0].toUpperCase()
 
-  for (let i = 1; i < text.length; i++) {
+  for (let i = 1; i < string.length; i++) {
     if (
-      text[i - 1].charCodeAt() === SPACE_CHAR_CODE ||
-      text[i - 1].charCodeAt() === NEW_LINE_CHAR_CODE
+      string[i - 1].charCodeAt() === SPACE_CHAR_CODE ||
+      string[i - 1].charCodeAt() === NEW_LINE_CHAR_CODE
     ) {
-      result += text[i].toUpperCase()
+      result += string[i].toUpperCase()
       continue
     }
-    result += text[i]
+    result += string[i]
   }
 
   return result
@@ -39,14 +39,14 @@ const getArgs = () => {
   return args
 }
 
-const capitalizeUserInput = () => {
+const resolveCapitalizeFirstLetters = () => {
   const arg = validateArgCount(getArgs())
   if (!arg) return
 
-  const text = validateStringArg(arg)
-  if (!text) return
+  const string = validateStringArg(arg)
+  if (!string) return
 
-  return capitalizeFirstLetters(text)
+  return getCapitalizeFirstLetters(string)
 }
 
-console.log(capitalizeUserInput())
+console.log(resolveCapitalizeFirstLetters())
