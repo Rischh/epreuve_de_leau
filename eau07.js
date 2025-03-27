@@ -1,19 +1,31 @@
 const getCapitalizeFirstLetters = (string) => {
-  const SPACE_CHAR_CODE = 32
-  const NEW_LINE_CHAR_CODE = 10
+  const spaces = [" ", "\t", "\n"]
 
   let result = ""
 
-  result += string[0].toUpperCase()
+  const firstCharCode = string[0].charCodeAt()
+
+  if (firstCharCode >= 97 && firstCharCode <= 122) {
+    result += String.fromCharCode(firstCharCode - 32)
+  }
+
+  if (firstCharCode >= 65 && firstCharCode <= 90) {
+    result += string[0]
+  }
 
   for (let i = 1; i < string.length; i++) {
-    if (
-      string[i - 1].charCodeAt() === SPACE_CHAR_CODE ||
-      string[i - 1].charCodeAt() === NEW_LINE_CHAR_CODE
-    ) {
-      result += string[i].toUpperCase()
+    const charCode = string[i].charCodeAt()
+
+    if (charCode >= 65 && charCode <= 90) {
+      result += string[i]
       continue
     }
+
+    if (spaces.includes(string[i - 1])) {
+      result += String.fromCharCode(charCode - 32)
+      continue
+    }
+
     result += string[i]
   }
 
