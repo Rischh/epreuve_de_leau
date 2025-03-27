@@ -1,3 +1,13 @@
+const getBetweenMinMax = (min, max) => {
+  let betweenMinMax = ""
+
+  for (let i = min; i < max; i++) {
+    betweenMinMax += `${i} `
+  }
+
+  console.log(betweenMinMax)
+}
+
 const setMinMax = (a, b) => {
   let min, max
 
@@ -10,16 +20,6 @@ const setMinMax = (a, b) => {
   }
 
   return [min, max]
-}
-
-const displayNumberRange = (min, max) => {
-  let sequence = ""
-
-  for (let i = min; i < max; i++) {
-    sequence += `${i} `
-  }
-
-  console.log(sequence)
 }
 
 const validateArgsCount = (args) => {
@@ -36,7 +36,7 @@ const validateNumericArg = (arg) => {
   return true
 }
 
-const checkEquality = (a, b) => {
+const isEqual = (a, b) => {
   if (a === b)
     return console.error("Le programme a besoin de 2 arguments non égaux.")
   return true
@@ -47,7 +47,7 @@ const getArgs = () => {
   return args
 }
 
-const resolveNumberRange = () => {
+const resolveBetweenMinMax = () => {
   const args = validateArgsCount(getArgs())
   if (!args) return
 
@@ -58,11 +58,11 @@ const resolveNumberRange = () => {
 
   const [fisrtNumber, secondNumber] = args
 
-  if (!checkEquality(fisrtNumber, secondNumber)) return
+  if (!isEqual(fisrtNumber, secondNumber)) return
 
   const [min, max] = setMinMax(fisrtNumber, secondNumber)
 
-  return displayNumberRange(min, max)
+  return getBetweenMinMax(min, max)
 }
 
-resolveNumberRange()
+resolveBetweenMinMax()
