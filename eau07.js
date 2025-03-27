@@ -20,18 +20,18 @@ const getCapitalizeFirstLetters = (string) => {
   return result
 }
 
-const validateArgCount = (args) => {
+const isValidArgsLength = (args) => {
   if (args.length !== 1)
     return console.error(
       "Le programme à besoin d'un unique argument pour fonctionner."
     )
-  return args[0]
+  return args
 }
 
-const validateStringArg = (arg) => {
-  if (!isNaN(arg))
+const isValidString = (string) => {
+  if (!isNaN(string))
     return console.error("Le programme à besoin d'un texte pour fonctionner.")
-  return arg
+  return string
 }
 
 const getArgs = () => {
@@ -40,10 +40,10 @@ const getArgs = () => {
 }
 
 const resolveCapitalizeFirstLetters = () => {
-  const arg = validateArgCount(getArgs())
-  if (!arg) return
+  const args = isValidArgsLength(getArgs())
+  if (!args) return
 
-  const string = validateStringArg(arg)
+  const string = isValidString(args[0])
   if (!string) return
 
   return getCapitalizeFirstLetters(string)
