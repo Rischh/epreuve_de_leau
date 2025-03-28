@@ -1,16 +1,32 @@
-const getAbsoluteMinDiff = (numbers) => {
-  let absoluteMin = 0
+const getAbsoluteMinDiff = (numbers, setMinMax) => {
+  let absoluteMinDiff = Infinity
 
   for (let i = 0; i < numbers.length; i++) {
     for (let j = i + 1; j < numbers.length; j++) {
-      if (numbers[i] < numbers[j]) {
-        if (numbers[j] - numbers[i] < absoluteMin || absoluteMin === 0)
-          absoluteMin = numbers[j] - numbers[i]
-      } else if (numbers[i] - numbers[j] < absoluteMin || absoluteMin === 0)
-        absoluteMin = numbers[i] - numbers[j]
+      const [min, max] = setMinMax(numbers[i], numbers[j])
+      const minDiff = max - min
+
+      if (minDiff < absoluteMinDiff) {
+        absoluteMinDiff = minDiff
+      }
     }
   }
-  return absoluteMin
+
+  return absoluteMinDiff
+}
+
+const setMinMax = (a, b) => {
+  let min, max
+
+  if (a > b) {
+    max = a
+    min = b
+  } else {
+    max = b
+    min = a
+  }
+
+  return [min, max]
 }
 
 const isValidArgsLength = (args) => {
@@ -34,7 +50,7 @@ const getArgs = () => {
   return args
 }
 
-const displayAbsoluteMinDiff = () => {
+const resolveAbsoluteMinDiff = () => {
   const args = isValidArgsLength(getArgs())
   if (!args) return
 
@@ -44,7 +60,7 @@ const displayAbsoluteMinDiff = () => {
     numbers.push(+arg)
   }
 
-  return getAbsoluteMinDiff(numbers)
+  return getAbsoluteMinDiff(numbers, setMinMax)
 }
 
-console.log(displayAbsoluteMinDiff())
+console.log(resolveAbsoluteMinDiff())
