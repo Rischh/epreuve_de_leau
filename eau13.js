@@ -17,6 +17,7 @@ const mySelectSort = (numbers) => {
         ;[sortedNumbers[i], sortedNumbers[minIndex]] = [min, sortedNumbers[i]]
       }
     }
+
     if (isSorted) return sortedNumbers
   }
 
@@ -44,7 +45,7 @@ const getArgs = () => {
   return args
 }
 
-const displaySelectSort = () => {
+const resolveSelectSort = () => {
   const args = isValidArgsLength(getArgs())
   if (!args) return
 
@@ -57,4 +58,4 @@ const displaySelectSort = () => {
   return mySelectSort(numbers).join(" ")
 }
 
-console.log(displaySelectSort())
+console.log(resolveSelectSort())
