@@ -12,8 +12,10 @@ const myBubbleSort = (numbers) => {
         isSorted = false
       }
     }
+
     if (isSorted) return sortedNumbers
   }
+
   return sortedNumbers
 }
 
@@ -38,7 +40,7 @@ const getArgs = () => {
   return args
 }
 
-const displayBubbleSort = () => {
+const resolveBubbleSort = () => {
   const args = isValidArgsLength(getArgs())
   if (!args) return
 
@@ -51,4 +53,4 @@ const displayBubbleSort = () => {
   return myBubbleSort(numbers).join(" ")
 }
 
-console.log(displayBubbleSort())
+console.log(resolveBubbleSort())
