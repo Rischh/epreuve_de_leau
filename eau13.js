@@ -23,7 +23,7 @@ const mySelectSort = (numbers) => {
   return sortedNumbers
 }
 
-const validateArgsCount = (args) => {
+const isValidArgsLength = (args) => {
   if (args.length < 2)
     return console.error(
       "Le programme a besoin d'au moins 2 arguments pour fonctionner."
@@ -31,12 +31,12 @@ const validateArgsCount = (args) => {
   return args
 }
 
-const validateNumericArg = (n) => {
+const isValidNumber = (n) => {
   if (isNaN(n))
     return console.error(
       "Le programme a besoin d'une liste de nombres entiers pour fonctionner."
     )
-  return true
+  return n
 }
 
 const getArgs = () => {
@@ -45,14 +45,13 @@ const getArgs = () => {
 }
 
 const displaySelectSort = () => {
-  const args = validateArgsCount(getArgs())
+  const args = isValidArgsLength(getArgs())
   if (!args) return
 
-  const numbers = [...args]
-
-  for (let i = 0; i < numbers.length; i++) {
-    if (!validateNumericArg(numbers[i])) return
-    numbers[i] = +numbers[i]
+  const numbers = []
+  for (const arg of args) {
+    if (!isValidNumber(arg)) return
+    numbers.push(+arg)
   }
 
   return mySelectSort(numbers).join(" ")
