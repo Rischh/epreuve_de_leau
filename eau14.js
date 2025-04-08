@@ -1,58 +1,48 @@
-const getSortedByAscii = (array) => {
-  const charCodes = getCharCodes(array)
-  const sortedArray = getBubbleSort(charCodes)
+const getSortedByAscii = (arr) => {
+  const copyArr = [...arr]
 
-  const result = []
-  const arrayClone = [...array]
+  let count = 0
 
-  for (let i = 0; i < sortedArray.length; i++) {
-    for (let j = 0; j < arrayClone.length; j++) {
-      if (arrayClone[j].charCodeAt() === sortedArray[i]) {
-        result.push(arrayClone[j])
-        arrayClone.splice(j, 1)
-        break
+  const places = []
+
+  for (let i = 0; i < arr.length; i++) {
+    let place = arr.length - 1
+
+    for (let j = 1; j < copyArr.length; j++) {
+      if (copyArr[0].charCodeAt(0) === copyArr[j].charCodeAt(0)) {
+        let index = 0
+        while (copyArr[0].charCodeAt(index) === copyArr[j].charCodeAt(index)) {
+          index++
+        }
+
+        if (copyArr[0].charCodeAt(index) < copyArr[j].charCodeAt(index)) {
+          place--
+        }
+      }
+
+      if (copyArr[0].charCodeAt(0) < copyArr[j].charCodeAt(0)) {
+        place--
       }
     }
+
+    places.push(place)
+    count++
+    ;[copyArr[0], copyArr[count]] = [copyArr[count], copyArr[0]]
+  }
+
+  const result = [...arr]
+
+  for (let i = 0; i < places.length; i++) {
+    result[places[i]] = arr[i]
   }
 
   return result
 }
 
-const getCharCodes = (array) => {
-  const charCodes = []
-
-  for (let i = 0; i < array.length; i++) {
-    charCodes.push(array[i].charCodeAt(0))
-  }
-
-  return charCodes
-}
-
-const getBubbleSort = (numbers) => {
-  const sortedNumbers = [...numbers]
-
-  for (let i = 0; i < sortedNumbers.length; i++) {
-    let isSorted = true
-    for (let j = 0; j < sortedNumbers.length - i; j++) {
-      if (sortedNumbers[j] > sortedNumbers[j + 1]) {
-        ;[sortedNumbers[j], sortedNumbers[j + 1]] = [
-          sortedNumbers[j + 1],
-          sortedNumbers[j],
-        ]
-        isSorted = false
-      }
-    }
-
-    if (isSorted) return sortedNumbers
-  }
-
-  return sortedNumbers
-}
-
-const isValidArgsLength = (args) => {
-  if (args.length < 2)
+const isValidArgsLength = (args, minLength) => {
+  if (args.length < minLength)
     return console.error(
-      "Le programme a besoin d'au moins 2 arguments pour fonctionner."
+      `Le programme a besoin d'au moins ${minLength} arguments pour fonctionner.`
     )
   return args
 }
@@ -66,7 +56,7 @@ const resolveSortedByAscii = () => {
   const args = isValidArgsLength(getArgs())
   if (!args) return
 
-  return getSortedByAscii(args)
+  return getSortedByAscii(args).join(" ")
 }
 
 console.log(resolveSortedByAscii())

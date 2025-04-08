@@ -18,17 +18,16 @@ const isPrimeNumber = (n) => {
   return true
 }
 
-const isValidArgsLength = (args) => {
-  if (args.length !== 1)
+const isValidArgsLength = (args, expectedLength) => {
+  if (args.length !== expectedLength)
     return console.error(
-      "Le programme a besoin d'un unique argument pour fonctionner."
+      `Le programme a besoin de ${expectedLength} argument pour fonctionner.`
     )
   return args
 }
 
 const isValidNumber = (n) => {
-  if (isNaN(n))
-    return console.error("Le programme a besoin d'un nombre entier.")
+  if (isNaN(n)) return console.error("Le programme a besoin d'un nombre.")
   return parseInt(n)
 }
 

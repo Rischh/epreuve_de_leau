@@ -16,17 +16,16 @@ const getFibonacciNumber = (index) => {
   return fibonacciNumber
 }
 
-const isValidArgsLength = (args) => {
-  if (args.length !== 1)
+const isValidArgsLength = (args, expectedLength) => {
+  if (args.length !== expectedLength)
     return console.error(
-      "Le programme a besoin d'un unique argument pour fonctionner."
+      `Le programme a besoin de ${expectedLength} argument pour fonctionner.`
     )
   return args
 }
 
 const isValidNumber = (n) => {
-  if (isNaN(n))
-    return console.error("Le programme a besoin d'un nombre entier.")
+  if (isNaN(n)) return console.error("Le programme a besoin d'un nombre.")
   return parseInt(n)
 }
 
@@ -36,7 +35,7 @@ const getArgs = () => {
 }
 
 const resolveFibonacciNumber = () => {
-  const args = isValidArgsLength(getArgs())
+  const args = isValidArgsLength(getArgs(), 1)
   if (!args) return
 
   const number = isValidNumber(args[0])
