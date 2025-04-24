@@ -1,39 +1,39 @@
-const getSortedByAscii = (arr) => {
-  const copyArr = [...arr]
+const getSortedByAscii = (strings) => {
+  const copy = [...strings]
 
   let count = 0
 
-  const places = []
+  const indexes = []
 
-  for (let i = 0; i < arr.length; i++) {
-    let place = arr.length - 1
+  for (let i = 0; i < strings.length; i++) {
+    let index = strings.length - 1
 
-    for (let j = 1; j < copyArr.length; j++) {
-      if (copyArr[0].charCodeAt(0) === copyArr[j].charCodeAt(0)) {
-        let index = 0
-        while (copyArr[0].charCodeAt(index) === copyArr[j].charCodeAt(index)) {
-          index++
+    for (let j = 1; j < copy.length; j++) {
+      if (copy[0].charCodeAt(0) === copy[j].charCodeAt(0)) {
+        let char = 0
+        while (copy[0].charCodeAt(char) === copy[j].charCodeAt(char)) {
+          char++
         }
 
-        if (copyArr[0].charCodeAt(index) < copyArr[j].charCodeAt(index)) {
-          place--
+        if (copy[0].charCodeAt(char) < copy[j].charCodeAt(char)) {
+          index--
         }
       }
 
-      if (copyArr[0].charCodeAt(0) < copyArr[j].charCodeAt(0)) {
-        place--
+      if (copy[0].charCodeAt(0) < copy[j].charCodeAt(0)) {
+        index--
       }
     }
 
-    places.push(place)
+    indexes.push(index)
     count++
-    ;[copyArr[0], copyArr[count]] = [copyArr[count], copyArr[0]]
+    ;[copy[0], copy[count]] = [copy[count], copy[0]]
   }
 
-  const result = [...arr]
+  const result = [...strings]
 
-  for (let i = 0; i < places.length; i++) {
-    result[places[i]] = arr[i]
+  for (let i = 0; i < indexes.length; i++) {
+    result[indexes[i]] = strings[i]
   }
 
   return result
