@@ -37,12 +37,12 @@ const isValidArgsLength = (args, wantedLength) => {
   return args
 }
 
-const isValidNumber = (n) => {
-  if (isNaN(n))
+const isValidNumber = (stringNumber) => {
+  if (isNaN(stringNumber))
     return console.error(
       "Le programme a besoin d'une liste de nombres entiers pour fonctionner."
     )
-  return n
+  return stringNumber
 }
 
 const getArgs = () => {

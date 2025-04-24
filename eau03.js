@@ -24,9 +24,10 @@ const isValidArgsLength = (args, wantedLength) => {
   return args
 }
 
-const isValidNumber = (n) => {
-  if (isNaN(n)) return console.error("Le programme a besoin d'un nombre.")
-  return parseInt(n)
+const isValidNumber = (stringNumber) => {
+  if (isNaN(stringNumber))
+    return console.error("Le programme a besoin d'un nombre.")
+  return parseInt(stringNumber)
 }
 
 const getArgs = () => {

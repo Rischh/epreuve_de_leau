@@ -30,10 +30,10 @@ const isValidArgsLength = (args, wantedLength) => {
   return args
 }
 
-const isValidNumber = (n) => {
-  if (isNaN(n))
+const isValidNumber = (stringNumber) => {
+  if (isNaN(stringNumber))
     return console.error("Le programme a besoin de 2 nombres pour fonctionner.")
-  return n
+  return stringNumber
 }
 
 const isEqual = (a, b) => {
