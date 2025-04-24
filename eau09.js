@@ -22,8 +22,8 @@ const setMinMax = (a, b) => {
   return [min, max]
 }
 
-const isValidArgsLength = (args) => {
-  if (args.length !== 2)
+const isValidArgsLength = (args, wantedLength) => {
+  if (args.length !== wantedLength)
     return console.error(
       "Le programme a besoin de 2 arguments pour fonctionner."
     )
@@ -48,7 +48,7 @@ const getArgs = () => {
 }
 
 const resolveBetweenMinMax = () => {
-  const args = isValidArgsLength(getArgs())
+  const args = isValidArgsLength(getArgs(), 2)
   if (!args) return
 
   const numbers = []

@@ -39,10 +39,10 @@ const getSortedByAscii = (arr) => {
   return result
 }
 
-const isValidArgsLength = (args, minLength) => {
-  if (args.length < minLength)
+const isValidArgsLength = (args, wantedLength) => {
+  if (args.length < wantedLength)
     return console.error(
-      `Le programme a besoin d'au moins ${minLength} arguments pour fonctionner.`
+      `Le programme a besoin d'au moins ${wantedLength} arguments pour fonctionner.`
     )
   return args
 }
@@ -53,7 +53,7 @@ const getArgs = () => {
 }
 
 const resolveSortedByAscii = () => {
-  const args = isValidArgsLength(getArgs())
+  const args = isValidArgsLength(getArgs(), 2)
   if (!args) return
 
   return getSortedByAscii(args).join(" ")

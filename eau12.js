@@ -19,8 +19,8 @@ const myBubbleSort = (numbers) => {
   return sortedNumbers
 }
 
-const isValidArgsLength = (args) => {
-  if (args.length < 2)
+const isValidArgsLength = (args, wantedLength) => {
+  if (args.length < wantedLength)
     return console.error(
       "Le programme a besoin d'au moins 2 arguments pour fonctionner."
     )
@@ -41,7 +41,7 @@ const getArgs = () => {
 }
 
 const resolveBubbleSort = () => {
-  const args = isValidArgsLength(getArgs())
+  const args = isValidArgsLength(getArgs(), 2)
   if (!args) return
 
   const numbers = []

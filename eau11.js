@@ -29,8 +29,8 @@ const setMinMax = (a, b) => {
   return [min, max]
 }
 
-const isValidArgsLength = (args) => {
-  if (args.length < 3)
+const isValidArgsLength = (args, wantedLength) => {
+  if (args.length < wantedLength)
     return console.error(
       "Le programme a besoin d'au moins 3 arguments pour fonctionner."
     )
@@ -51,7 +51,7 @@ const getArgs = () => {
 }
 
 const resolveAbsoluteMinDiff = () => {
-  const args = isValidArgsLength(getArgs())
+  const args = isValidArgsLength(getArgs(), 3)
   if (!args) return
 
   const numbers = []

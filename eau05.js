@@ -11,10 +11,10 @@ const isIncluded = (string, searchString) => {
   return false
 }
 
-const isValidArgsLength = (args) => {
-  if (args.length !== 2)
+const isValidArgsLength = (args, wantedLength) => {
+  if (args.length !== wantedLength)
     return console.error(
-      "Le programme a besoin de 2 arguments pour fonctionner."
+      `Le programme a besoin de ${wantedLength} arguments pour fonctionner.`
     )
   return args
 }
@@ -33,7 +33,7 @@ const getArgs = () => {
 }
 
 const hasSearchString = () => {
-  const args = isValidArgsLength(getArgs())
+  const args = isValidArgsLength(getArgs(), 2)
   if (!args) return
 
   for (const arg of args) {

@@ -5,8 +5,8 @@ const isValidNumber = (string) => {
   return true
 }
 
-const isValidArgsLength = (args) => {
-  if (args.length !== 1)
+const isValidArgsLength = (args, wantedLength) => {
+  if (args.length !== wantedLength)
     return console.error(
       "Le programme à besoin d'un unique argument pour fonctionner."
     )
@@ -19,7 +19,7 @@ const getArgs = () => {
 }
 
 const getIsValidNumber = () => {
-  const args = isValidArgsLength(getArgs())
+  const args = isValidArgsLength(getArgs(), 1)
   if (!args) return
 
   return isValidNumber(args[0])
