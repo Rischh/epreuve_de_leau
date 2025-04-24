@@ -1,12 +1,13 @@
-const isIncluded = (string, searchString) => {
+const isIncluded = (string, substring) => {
   for (let i = 0; i < string.length; i++) {
     let portion = ""
-    for (let j = i; j < searchString.length + i; j++) {
+    for (let j = i; j < substring.length + i; j++) {
       portion += string[j]
     }
-    if (portion.length !== searchString.length) break
 
-    if (portion === searchString) return true
+    if (portion.length !== substring.length) break
+
+    if (portion === substring) return true
   }
   return false
 }
@@ -32,7 +33,7 @@ const getArgs = () => {
   return args
 }
 
-const hasSearchString = () => {
+const hasSubstring = () => {
   const args = isValidArgsLength(getArgs(), 2)
   if (!args) return
 
@@ -40,8 +41,8 @@ const hasSearchString = () => {
     if (!isValidString(arg)) return
   }
 
-  const [string, searchString] = args
-  return isIncluded(string, searchString)
+  const [string, substring] = args
+  return isIncluded(string, substring)
 }
 
-console.log(hasSearchString())
+console.log(hasSubstring())
