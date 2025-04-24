@@ -1,11 +1,11 @@
-const getReverseArray = (arr) => {
-  const reverseArray = []
+const getReversedArr = (arr) => {
+  const reversedArr = []
 
   for (let i = arr.length - 1; i >= 0; i--) {
-    reverseArray.push(arr[i])
+    reversedArr.push(arr[i])
   }
 
-  return reverseArray
+  return reversedArr
 }
 
 const isValidArgsLength = (args, wantedLength) => {
@@ -21,13 +21,13 @@ const getArgs = () => {
   return args
 }
 
-const displayReverseArgs = () => {
+const displayReversedArgs = () => {
   const args = isValidArgsLength(getArgs(), 2)
   if (!args) return
 
-  const reverseArgs = getReverseArray(args)
+  const reverseArgs = getReversedArr(args)
 
   for (const arg of reverseArgs) console.log(arg)
 }
 
-displayReverseArgs()
+displayReversedArgs()
