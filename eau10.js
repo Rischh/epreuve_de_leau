@@ -1,6 +1,6 @@
-const getIndexOf = (array, searchElement) => {
-  for (let i = 0; i < array.length; i++) {
-    if (array[i] === searchElement) return i
+const getIndexOf = (arr, searchElement) => {
+  for (let i = 0; i < arr.length; i++) {
+    if (arr[i] === searchElement) return i
   }
   return -1
 }
@@ -22,9 +22,8 @@ const resolveIndexOf = () => {
   const args = isValidArgsLength(getArgs(), 2)
   if (!args) return
 
-  const values = [...args]
-  searchValue = values[values.length - 1]
-  values.pop()
+  const values = args.slice(0, args.length - 1)
+  const searchValue = args[args.length - 1]
 
   return getIndexOf(values, searchValue)
 }
