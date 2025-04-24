@@ -1,5 +1,5 @@
-const getNextPrimeNumber = (n, isPrimeNumber) => {
-  let nextPrimeNumber = n + 1
+const getNextPrimeNumber = (number, isPrimeNumber) => {
+  let nextPrimeNumber = number + 1
 
   let isComposite = true
 
@@ -9,9 +9,9 @@ const getNextPrimeNumber = (n, isPrimeNumber) => {
   }
 }
 
-const isPrimeNumber = (n) => {
-  for (let i = 2; i < n; i++) {
-    if (n % i === 0) {
+const isPrimeNumber = (number) => {
+  for (let i = 2; i < number; i++) {
+    if (number % i === 0) {
       return false
     }
   }
